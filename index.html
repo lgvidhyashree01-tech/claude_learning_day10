@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vidhyashree L G — Full Stack Developer</title>
+<meta name="description" content="Vidhyashree L G — B.Tech IT student at Prathyusha Engineering College. Python developer, Full Stack enthusiast. CGPA 9.6/10. Chennai, India.">
+<meta name="keywords" content="Vidhyashree, Full Stack Developer, Python Developer, B.Tech IT, Chennai, Portfolio">
+<meta property="og:title" content="Vidhyashree L G — Full Stack Developer Portfolio">
+<meta property="og:description" content="Python developer & full stack enthusiast from Chennai. CGPA 9.6 · 2 internships · Prathyusha Engineering College.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: {
+        display: ['Syne', 'sans-serif'],
+        body: ['DM Sans', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
+      colors: {
+        ink: { DEFAULT: '#0d0d14', 50: '#f5f5ff', 100: '#e8e8f8', 200: '#c8c8ec', 300: '#9898d8', 400: '#6868c0', 500: '#4848a8', 600: '#333390', 700: '#1e1e70', 800: '#12124c', 900: '#0d0d30', 950: '#0a0a20' },
+        violet: { DEFAULT: '#7c5cbf', light: '#a484e8', dark: '#5a3d99', glow: 'rgba(124,92,191,0.2)' },
+        teal: { DEFAULT: '#2dd4bf', light: '#5eead4', dark: '#14b8a6', glow: 'rgba(45,212,191,0.15)' },
+      },
+      animation: {
+        'float': 'float 6s ease-in-out infinite',
+        'pulse-slow': 'pulse 3s ease-in-out infinite',
+        'slide-up': 'slideUp 0.6s ease both',
+        'fade-in': 'fadeIn 0.5s ease both',
+        'blink': 'blink 1s step-end infinite',
+      },
+      keyframes: {
+        float: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-12px)' } },
+        slideUp: { from: { opacity: '0', transform: 'translateY(24px)' }, to: { opacity: '1', transform: 'translateY(0)' } },
+        fadeIn: { from: { opacity: '0' }, to: { opacity: '1' } },
+        blink: { '0%,100%': { opacity: '1' }, '50%': { opacity: '0' } },
+      },
+    }
+  }
+}
+</script>
+<style>
+  /* ── GLOBALS ── */
+  * { box-sizing: border-box; }
+  html { font-family: 'DM Sans', sans-serif; }
+  body { transition: background 0.3s, color 0.3s; }
+
+  /* ── DARK MODE DEFAULTS ── */
+  .dark body { background: #0d0d14; color: #e8e8f8; }
+
+  /* ── GRADIENT TEXT ── */
+  .grad-text {
+    background: linear-gradient(135deg, #a484e8 0%, #2dd4bf 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .grad-text-rev {
+    background: linear-gradient(135deg, #2dd4bf 0%, #a484e8 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── AMBIENT ORBS ── */
+  .orb { position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; animation: float 10s ease-in-out infinite; }
+  .orb1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(124,92,191,0.12) 0%, transparent 70%); top: -100px; right: -150px; }
+  .orb2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(45,212,191,0.08) 0%, transparent 70%); bottom: 10%; left: -120px; animation-delay: -3s; }
+  .orb3 { width: 250px; height: 250px; background: radial-gradient(circle, rgba(124,92,191,0.06) 0%, transparent 70%); top: 50%; right: 10%; animation-delay: -6s; }
+
+  /* ── GRID OVERLAY ── */
+  .grid-bg { position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image: linear-gradient(rgba(124,92,191,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(124,92,191,0.04) 1px, transparent 1px);
+    background-size: 48px 48px; }
+
+  /* ── NAV ── */
+  .nav-link { position: relative; transition: color 0.2s; }
+  .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #a484e8, #2dd4bf); transform: scaleX(0); transition: transform 0.2s; border-radius: 1px; }
+  .nav-link.active::after, .nav-link:hover::after { transform: scaleX(1); }
+
+  /* ── CARD ── */
+  .glass { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); backdrop-filter: blur(8px); }
+  .glass-light { background: rgba(255,255,255,0.85); border: 1px solid rgba(0,0,0,0.06); backdrop-filter: blur(8px); }
+  .card-hover { transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; }
+  .card-hover:hover { transform: translateY(-4px); border-color: rgba(164,132,232,0.35); box-shadow: 0 16px 40px rgba(124,92,191,0.12); }
+
+  /* ── SKILL BARS ── */
+  .skill-bar { height: 4px; border-radius: 2px; background: rgba(255,255,255,0.06); overflow: hidden; }
+  .skill-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, #7c5cbf, #2dd4bf); width: 0; transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+
+  /* ── TYPING CURSOR ── */
+  .cursor { display: inline-block; animation: blink 1s step-end infinite; }
+
+  /* ── AVATAR RING ── */
+  .avatar-ring { background: conic-gradient(#a484e8, #2dd4bf, #a484e8); padding: 3px; border-radius: 50%; }
+
+  /* ── SECTION REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── CONTACT INPUT ── */
+  .contact-input { width: 100%; padding: 10px 16px; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
+  .dark .contact-input { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: #e8e8f8; }
+  .light .contact-input { background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.12); color: #1a1a2e; }
+  .contact-input:focus { border-color: #7c5cbf; box-shadow: 0 0 0 3px rgba(124,92,191,0.15); }
+  .contact-input::placeholder { color: rgba(168,168,200,0.5); }
+
+  /* ── THEME TOGGLE ── */
+  .toggle-track { width: 44px; height: 24px; border-radius: 12px; position: relative; cursor: pointer; transition: background 0.3s; }
+  .toggle-thumb { width: 18px; height: 18px; border-radius: 50%; position: absolute; top: 3px; left: 3px; transition: transform 0.3s; }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: #7c5cbf; border-radius: 2px; }
+
+  /* ── LIGHT MODE OVERRIDES ── */
+  html:not(.dark) .orb1 { background: radial-gradient(circle, rgba(124,92,191,0.07) 0%, transparent 70%); }
+  html:not(.dark) .orb2 { background: radial-gradient(circle, rgba(45,212,191,0.05) 0%, transparent 70%); }
+  html:not(.dark) .grid-bg { background-image: linear-gradient(rgba(124,92,191,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(124,92,191,0.03) 1px, transparent 1px); }
+  html:not(.dark) .glass { background: rgba(255,255,255,0.7); border-color: rgba(0,0,0,0.07); }
+  html:not(.dark) .skill-bar { background: rgba(0,0,0,0.08); }
+</style>
+</head>
+<body class="dark bg-ink-950 text-ink-100 overflow-x-hidden">
+
+<!-- AMBIENT -->
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+<div class="grid-bg dark:opacity-100 opacity-40"></div>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background:transparent">
+  <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+    <a href="#hero" class="font-display font-700 text-lg tracking-tight">
+      <span class="grad-text">VLG</span>
+    </a>
+    <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+      <a href="#about" class="nav-link text-ink-300 dark:text-ink-300 hover:text-ink-100 dark:hover:text-ink-100">About</a>
+      <a href="#skills" class="nav-link text-ink-300 dark:text-ink-300 hover:text-ink-100 dark:hover:text-ink-100">Skills</a>
+      <a href="#projects" class="nav-link text-ink-300 dark:text-ink-300 hover:text-ink-100 dark:hover:text-ink-100">Projects</a>
+      <a href="#experience" class="nav-link text-ink-300 dark:text-ink-300 hover:text-ink-100 dark:hover:text-ink-100">Experience</a>
+      <a href="#contact" class="nav-link text-ink-300 dark:text-ink-300 hover:text-ink-100 dark:hover:text-ink-100">Contact</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <!-- THEME TOGGLE -->
+      <button id="themeToggle" class="toggle-track bg-violet-dark dark:bg-violet-dark flex items-center" aria-label="Toggle theme">
+        <span class="toggle-thumb bg-white flex items-center justify-center text-xs">☀️</span>
+      </button>
+      <!-- MOBILE MENU -->
+      <button id="mobileMenuBtn" class="md:hidden text-ink-300 hover:text-ink-100 focus:outline-none" aria-label="Menu">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu" class="hidden md:hidden glass px-5 pb-4 flex flex-col gap-3 text-sm font-medium">
+    <a href="#about" class="text-ink-300 hover:text-ink-100 py-1" onclick="closeMobile()">About</a>
+    <a href="#skills" class="text-ink-300 hover:text-ink-100 py-1" onclick="closeMobile()">Skills</a>
+    <a href="#projects" class="text-ink-300 hover:text-ink-100 py-1" onclick="closeMobile()">Projects</a>
+    <a href="#experience" class="text-ink-300 hover:text-ink-100 py-1" onclick="closeMobile()">Experience</a>
+    <a href="#contact" class="text-ink-300 hover:text-ink-100 py-1" onclick="closeMobile()">Contact</a>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero" class="relative min-h-screen flex items-center justify-center pt-20">
+  <div class="relative z-10 max-w-6xl mx-auto px-5 py-20 grid md:grid-cols-2 gap-16 items-center">
+    <!-- LEFT -->
+    <div>
+      <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-xs font-mono text-teal-light mb-8" style="border-color:rgba(45,212,191,0.2)">
+        <span class="w-2 h-2 rounded-full bg-teal-light animate-pulse-slow"></span>
+        Available for opportunities · Chennai, India
+      </div>
+      <h1 class="font-display font-800 text-5xl md:text-6xl leading-tight tracking-tight mb-4">
+        Vidhyashree<br><span class="grad-text">L G</span>
+      </h1>
+      <div class="text-xl md:text-2xl font-display font-500 text-ink-300 mb-6 h-8">
+        <span id="typedText"></span><span class="cursor grad-text">|</span>
+      </div>
+      <p class="text-ink-300 leading-relaxed mb-8 max-w-md text-[15px]">
+        B.Tech IT student at Prathyusha Engineering College · CGPA 9.6 · building clean, purposeful software with Python and the web. Two internships, one direction: full stack development.
+      </p>
+      <div class="flex flex-wrap gap-3 mb-10">
+        <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:scale-105" style="background:linear-gradient(135deg,#7c5cbf,#2dd4bf)">
+          View Projects
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="mailto:lgvidhyashree@gmail.com" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold glass card-hover" style="color:#a484e8;border-color:rgba(164,132,232,0.25)">
+          Get in Touch
+        </a>
+      </div>
+      <!-- SOCIAL LINKS -->
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/vidhyashree" target="_blank" class="text-ink-400 hover:text-ink-100 transition-colors" aria-label="GitHub">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/vidhyashree" target="_blank" class="text-ink-400 hover:text-ink-100 transition-colors" aria-label="LinkedIn">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="mailto:lgvidhyashree@gmail.com" class="text-ink-400 hover:text-ink-100 transition-colors" aria-label="Email">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <!-- RIGHT — AVATAR -->
+    <div class="flex justify-center">
+      <div class="relative">
+        <div class="avatar-ring w-64 h-64 md:w-72 md:h-72 animate-float">
+          <div class="w-full h-full rounded-full bg-ink-900 flex items-center justify-center overflow-hidden" style="background:linear-gradient(135deg,#1a1a30,#0d0d20)">
+            <!-- SVG Avatar placeholder -->
+            <svg viewBox="0 0 160 160" class="w-48 h-48 opacity-90" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="60" r="32" fill="url(#av1)"/>
+              <ellipse cx="80" cy="130" rx="52" ry="34" fill="url(#av2)"/>
+              <defs>
+                <radialGradient id="av1" cx="40%" cy="35%"><stop offset="0%" stop-color="#c8b4f0"/><stop offset="100%" stop-color="#7c5cbf"/></radialGradient>
+                <radialGradient id="av2" cx="50%" cy="0%"><stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.6"/><stop offset="100%" stop-color="#7c5cbf" stop-opacity="0.3"/></radialGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <!-- FLOATING BADGES -->
+        <div class="absolute -top-3 -right-2 glass px-3 py-2 rounded-xl text-xs font-mono animate-float" style="animation-delay:-2s;border-color:rgba(164,132,232,0.25)">
+          <span class="grad-text font-semibold">CGPA 9.6</span>
+        </div>
+        <div class="absolute -bottom-2 -left-3 glass px-3 py-2 rounded-xl text-xs font-mono animate-float" style="animation-delay:-4s;border-color:rgba(45,212,191,0.2)">
+          <span style="color:#2dd4bf">Python · Flask</span>
+        </div>
+        <div class="absolute top-1/2 -right-8 glass px-3 py-2 rounded-xl text-xs font-mono animate-float" style="animation-delay:-1s;border-color:rgba(164,132,232,0.2)">
+          <span class="text-ink-300">2 Internships</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- SCROLL HINT -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-ink-500 text-xs font-mono">
+    <span>scroll</span>
+    <div class="w-px h-8 bg-gradient-to-b from-violet to-transparent"></div>
+  </div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section id="about" class="relative z-10 py-24">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="reveal grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="font-mono text-teal-light text-xs mb-3 tracking-widest uppercase">Who I am</div>
+        <h2 class="font-display font-700 text-4xl mb-6 tracking-tight">Turning code into<br><span class="grad-text-rev">solutions</span></h2>
+        <p class="text-ink-300 leading-relaxed mb-5 text-[15px]">I'm a B.Tech Information Technology student at Prathyusha Engineering College, Anna University, Chennai. My CGPA of 9.6 reflects a genuine curiosity for how things work — not just academic habit.</p>
+        <p class="text-ink-300 leading-relaxed mb-5 text-[15px]">Through two Python development internships, I've moved from writing scripts in a classroom to shipping backend modules and automation tools inside real teams. I've worked in Agile environments, participated in code reviews, and learned that clean, documented code is a form of professional communication.</p>
+        <p class="text-ink-300 leading-relaxed mb-8 text-[15px]">My goal is to grow into a full stack developer who can own features end-to-end — from database schema to polished frontend. I'm currently deepening my JavaScript knowledge to complement my Python and backend foundation.</p>
+        <div class="flex flex-wrap gap-3">
+          <div class="glass px-4 py-2 rounded-lg text-xs font-mono" style="border-color:rgba(164,132,232,0.2);color:#a484e8">📍 Chennai, India</div>
+          <div class="glass px-4 py-2 rounded-lg text-xs font-mono" style="border-color:rgba(45,212,191,0.2);color:#2dd4bf">🎓 B.Tech IT · 2027</div>
+          <div class="glass px-4 py-2 rounded-lg text-xs font-mono" style="border-color:rgba(164,132,232,0.2);color:#a484e8">⚡ Open to Roles</div>
+        </div>
+      </div>
+      <!-- STATS CARD -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="glass card-hover rounded-2xl p-6">
+          <div class="font-display font-800 text-3xl grad-text mb-1">9.6</div>
+          <div class="text-ink-400 text-sm">CGPA / 10.0</div>
+          <div class="text-ink-500 text-xs mt-1 font-mono">Anna University</div>
+        </div>
+        <div class="glass card-hover rounded-2xl p-6">
+          <div class="font-display font-800 text-3xl grad-text-rev mb-1">2</div>
+          <div class="text-ink-400 text-sm">Internships</div>
+          <div class="text-ink-500 text-xs mt-1 font-mono">Python · Agile</div>
+        </div>
+        <div class="glass card-hover rounded-2xl p-6">
+          <div class="font-display font-800 text-3xl grad-text mb-1">5+</div>
+          <div class="text-ink-400 text-sm">Technologies</div>
+          <div class="text-ink-500 text-xs mt-1 font-mono">& growing</div>
+        </div>
+        <div class="glass card-hover rounded-2xl p-6">
+          <div class="font-display font-800 text-3xl grad-text-rev mb-1">2027</div>
+          <div class="text-ink-400 text-sm">Graduating</div>
+          <div class="text-ink-500 text-xs mt-1 font-mono">Prathyusha EC</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SKILLS ═══════════ -->
+<section id="skills" class="relative z-10 py-24">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="reveal text-center mb-16">
+      <div class="font-mono text-teal-light text-xs mb-3 tracking-widest uppercase">What I work with</div>
+      <h2 class="font-display font-700 text-4xl tracking-tight">Technical <span class="grad-text">Skills</span></h2>
+    </div>
+    <div class="reveal grid md:grid-cols-2 gap-8 mb-12">
+      <!-- SKILL BARS -->
+      <div class="glass rounded-2xl p-8">
+        <h3 class="font-display font-600 text-base mb-6 text-ink-200">Core Proficiency</h3>
+        <div class="space-y-5" id="skillBars">
+          <div data-level="90"><span class="text-sm text-ink-300 mb-2 block">Python</span><div class="skill-bar"><div class="skill-fill"></div></div></div>
+          <div data-level="80"><span class="text-sm text-ink-300 mb-2 block">HTML & CSS</span><div class="skill-bar"><div class="skill-fill"></div></div></div>
+          <div data-level="65"><span class="text-sm text-ink-300 mb-2 block">JavaScript</span><div class="skill-bar"><div class="skill-fill"></div></div></div>
+          <div data-level="75"><span class="text-sm text-ink-300 mb-2 block">Flask / Python Web</span><div class="skill-bar"><div class="skill-fill"></div></div></div>
+          <div data-level="70"><span class="text-sm text-ink-300 mb-2 block">SQL (MySQL · SQLite)</span><div class="skill-bar"><div class="skill-fill"></div></div></div>
+          <div data-level="80"><span class="text-sm text-ink-300 mb-2 block">Git & GitHub</span><div class="skill-bar"><div class="skill-fill"></div></div></div>
+        </div>
+      </div>
+      <!-- TOOLS + SOFT -->
+      <div class="space-y-6">
+        <div class="glass rounded-2xl p-6">
+          <h3 class="font-display font-600 text-sm mb-4 text-ink-400 uppercase tracking-wider">Languages & Frameworks</h3>
+          <div class="flex flex-wrap gap-2" id="techTags">
+            <span>Python</span><span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+            <span>Flask</span><span>NumPy</span><span>Pandas</span><span>SQLite</span><span>MySQL</span>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <h3 class="font-display font-600 text-sm mb-4 text-ink-400 uppercase tracking-wider">Tools & Platforms</h3>
+          <div class="flex flex-wrap gap-2" id="toolTags">
+            <span>Git</span><span>GitHub</span><span>VS Code</span><span>Google Colab</span><span>Jupyter</span>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <h3 class="font-display font-600 text-sm mb-4 text-ink-400 uppercase tracking-wider">Concepts & Practices</h3>
+          <div class="flex flex-wrap gap-2" id="conceptTags">
+            <span>OOP</span><span>REST APIs</span><span>Data Structures</span><span>Agile / Scrum</span>
+            <span>Version Control</span><span>Problem Solving</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROJECTS ═══════════ -->
+<section id="projects" class="relative z-10 py-24">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="reveal text-center mb-16">
+      <div class="font-mono text-teal-light text-xs mb-3 tracking-widest uppercase">What I've built</div>
+      <h2 class="font-display font-700 text-4xl tracking-tight">Featured <span class="grad-text">Projects</span></h2>
+    </div>
+    <div class="reveal grid md:grid-cols-3 gap-6">
+      <!-- PROJECT 1 -->
+      <div class="glass card-hover rounded-2xl p-7 flex flex-col">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl mb-5" style="background:rgba(124,92,191,0.15)">🐍</div>
+        <h3 class="font-display font-700 text-lg mb-2">Python Data Automation Tool</h3>
+        <p class="text-ink-400 text-sm leading-relaxed mb-5 flex-1">A command-line automation system that streamlines repetitive data processing tasks — parsing large CSV datasets, transforming records, and generating structured reports. Reduced manual processing time by over 60% in its internship deployment.</p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">OOP</span><span class="tech-tag">CSV</span>
+        </div>
+        <a href="https://github.com/vidhyashree" target="_blank" class="inline-flex items-center gap-2 text-xs font-mono" style="color:#a484e8">
+          github.com/vidhyashree
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+      <!-- PROJECT 2 -->
+      <div class="glass card-hover rounded-2xl p-7 flex flex-col" style="border-color:rgba(164,132,232,0.2)">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl mb-5" style="background:rgba(45,212,191,0.12)">🌐</div>
+        <h3 class="font-display font-700 text-lg mb-2">Flask Web Application</h3>
+        <p class="text-ink-400 text-sm leading-relaxed mb-5 flex-1">A full-featured web application built with Flask, applying MVC architecture and REST API principles. Features user input handling, database integration with SQLite, and a clean frontend interface — demonstrating end-to-end backend development skills.</p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="tech-tag">Flask</span><span class="tech-tag">Python</span><span class="tech-tag">SQLite</span><span class="tech-tag">REST API</span><span class="tech-tag">HTML/CSS</span>
+        </div>
+        <a href="https://github.com/vidhyashree" target="_blank" class="inline-flex items-center gap-2 text-xs font-mono" style="color:#2dd4bf">
+          github.com/vidhyashree
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+      <!-- PROJECT 3 -->
+      <div class="glass card-hover rounded-2xl p-7 flex flex-col">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl mb-5" style="background:rgba(124,92,191,0.15)">📊</div>
+        <h3 class="font-display font-700 text-lg mb-2">Python Analytics Dashboard</h3>
+        <p class="text-ink-400 text-sm leading-relaxed mb-5 flex-1">An interactive data analysis project using NumPy and Pandas to process, clean, and visualise datasets. Built to solve a real-world analytical problem — applying modular architecture, file handling, and systematic debugging throughout development.</p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="tech-tag">Python</span><span class="tech-tag">NumPy</span><span class="tech-tag">Pandas</span><span class="tech-tag">Data Analysis</span>
+        </div>
+        <a href="https://github.com/vidhyashree" target="_blank" class="inline-flex items-center gap-2 text-xs font-mono" style="color:#a484e8">
+          github.com/vidhyashree
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EXPERIENCE ═══════════ -->
+<section id="experience" class="relative z-10 py-24">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="reveal text-center mb-16">
+      <div class="font-mono text-teal-light text-xs mb-3 tracking-widest uppercase">Work & growth</div>
+      <h2 class="font-display font-700 text-4xl tracking-tight">Experience & <span class="grad-text">Achievements</span></h2>
+    </div>
+    <div class="reveal grid md:grid-cols-2 gap-8">
+      <!-- TIMELINE -->
+      <div>
+        <h3 class="font-display font-600 text-base mb-6 text-ink-300">Internship Experience</h3>
+        <div class="space-y-5">
+          <!-- Internship 1 -->
+          <div class="glass card-hover rounded-2xl p-6" style="border-left:3px solid #7c5cbf;border-top-left-radius:4px;border-bottom-left-radius:4px">
+            <div class="flex items-start justify-between mb-2">
+              <div>
+                <div class="font-display font-700 text-base">Python Development Intern</div>
+                <div class="text-ink-400 text-sm font-mono mt-0.5">[Company Name] · 2024</div>
+              </div>
+              <span class="text-xs px-2 py-1 rounded-md font-mono" style="background:rgba(124,92,191,0.12);color:#a484e8">Python</span>
+            </div>
+            <ul class="text-ink-400 text-sm space-y-1.5 leading-relaxed mt-3">
+              <li class="flex gap-2"><span style="color:#7c5cbf">▸</span>Developed Python automation scripts to streamline data processing workflows</li>
+              <li class="flex gap-2"><span style="color:#7c5cbf">▸</span>Built and unit-tested backend modules for an internal web application</li>
+              <li class="flex gap-2"><span style="color:#7c5cbf">▸</span>Worked in an Agile team — daily stand-ups, sprint reviews, peer code reviews</li>
+            </ul>
+          </div>
+          <!-- Internship 2 -->
+          <div class="glass card-hover rounded-2xl p-6" style="border-left:3px solid #2dd4bf;border-top-left-radius:4px;border-bottom-left-radius:4px">
+            <div class="flex items-start justify-between mb-2">
+              <div>
+                <div class="font-display font-700 text-base">Software Development Intern</div>
+                <div class="text-ink-400 text-sm font-mono mt-0.5">[Company Name] · 2024</div>
+              </div>
+              <span class="text-xs px-2 py-1 rounded-md font-mono" style="background:rgba(45,212,191,0.1);color:#2dd4bf">Full Stack</span>
+            </div>
+            <ul class="text-ink-400 text-sm space-y-1.5 leading-relaxed mt-3">
+              <li class="flex gap-2"><span style="color:#2dd4bf">▸</span>Designed, developed, and tested software modules in a professional team</li>
+              <li class="flex gap-2"><span style="color:#2dd4bf">▸</span>Managed feature branches using Git/GitHub version control best practices</li>
+              <li class="flex gap-2"><span style="color:#2dd4bf">▸</span>Produced technical documentation for project deliverables and knowledge transfer</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- ACHIEVEMENTS -->
+      <div>
+        <h3 class="font-display font-600 text-base mb-6 text-ink-300">Achievements & Certifications</h3>
+        <div class="space-y-4">
+          <div class="glass card-hover rounded-2xl p-5 flex gap-4 items-start">
+            <div class="text-2xl mt-0.5">🏆</div>
+            <div>
+              <div class="font-display font-700 text-sm mb-1">CGPA 9.6 / 10.0</div>
+              <div class="text-ink-400 text-xs leading-relaxed">Top academic performer in the B.Tech IT department · Prathyusha Engineering College · Anna University</div>
+            </div>
+          </div>
+          <div class="glass card-hover rounded-2xl p-5 flex gap-4 items-start">
+            <div class="text-2xl mt-0.5">🏅</div>
+            <div>
+              <div class="font-display font-700 text-sm mb-1">Hackathon Participant</div>
+              <div class="text-ink-400 text-xs leading-relaxed">Active participant in college-level technical events, hackathons, and coding competitions</div>
+            </div>
+          </div>
+          <div class="glass card-hover rounded-2xl p-5 flex gap-4 items-start">
+            <div class="text-2xl mt-0.5">📜</div>
+            <div>
+              <div class="font-display font-700 text-sm mb-1">Python for Everybody</div>
+              <div class="text-ink-400 text-xs leading-relaxed">Certified via Coursera / NPTEL · foundational Python programming and data structures</div>
+            </div>
+          </div>
+          <div class="glass card-hover rounded-2xl p-5 flex gap-4 items-start">
+            <div class="text-2xl mt-0.5">🤝</div>
+            <div>
+              <div class="font-display font-700 text-sm mb-1">Coding Club Contributor</div>
+              <div class="text-ink-400 text-xs leading-relaxed">Active member of the college coding club and technical society — peer learning and collaboration</div>
+            </div>
+          </div>
+          <div class="glass card-hover rounded-2xl p-5 flex gap-4 items-start">
+            <div class="text-2xl mt-0.5">🌐</div>
+            <div>
+              <div class="font-display font-700 text-sm mb-1">30-Day Claude AI Learning Challenge</div>
+              <div class="text-ink-400 text-xs leading-relaxed">Completed structured AI literacy programme · prompt engineering, tool-building, and workflow automation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact" class="relative z-10 py-24 pb-32">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="reveal text-center mb-16">
+      <div class="font-mono text-teal-light text-xs mb-3 tracking-widest uppercase">Let's talk</div>
+      <h2 class="font-display font-700 text-4xl tracking-tight">Get in <span class="grad-text">Touch</span></h2>
+      <p class="text-ink-400 mt-3 text-[15px] max-w-md mx-auto">Open to internships, full-time junior roles, and project collaborations. Response within 24 hours.</p>
+    </div>
+    <div class="reveal grid md:grid-cols-2 gap-10 items-start">
+      <!-- CONTACT INFO -->
+      <div class="space-y-5">
+        <a href="mailto:lgvidhyashree@gmail.com" class="glass card-hover rounded-2xl p-5 flex items-center gap-4 block">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg" style="background:rgba(124,92,191,0.15)">📧</div>
+          <div>
+            <div class="text-xs text-ink-500 font-mono mb-0.5">Email</div>
+            <div class="text-sm font-medium" style="color:#a484e8">lgvidhyashree@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/vidhyashree" target="_blank" class="glass card-hover rounded-2xl p-5 flex items-center gap-4 block">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg" style="background:rgba(45,212,191,0.1)">🔗</div>
+          <div>
+            <div class="text-xs text-ink-500 font-mono mb-0.5">LinkedIn</div>
+            <div class="text-sm font-medium" style="color:#2dd4bf">linkedin.com/in/vidhyashree</div>
+          </div>
+        </a>
+        <a href="https://github.com/vidhyashree" target="_blank" class="glass card-hover rounded-2xl p-5 flex items-center gap-4 block">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg" style="background:rgba(124,92,191,0.12)">💻</div>
+          <div>
+            <div class="text-xs text-ink-500 font-mono mb-0.5">GitHub</div>
+            <div class="text-sm font-medium" style="color:#a484e8">github.com/vidhyashree</div>
+          </div>
+        </a>
+        <div class="glass rounded-2xl p-5">
+          <div class="text-xs text-ink-500 font-mono mb-2">Location</div>
+          <div class="text-sm text-ink-300">📍 Chennai, Tamil Nadu, India</div>
+          <div class="text-xs text-ink-500 mt-2 font-mono">Available for remote & Chennai-based roles</div>
+        </div>
+      </div>
+      <!-- CONTACT FORM -->
+      <div class="glass rounded-2xl p-8">
+        <h3 class="font-display font-600 text-base mb-6 text-ink-200">Send a message</h3>
+        <form id="contactForm" class="space-y-4" onsubmit="submitForm(event)">
+          <div>
+            <label class="text-xs font-mono text-ink-500 uppercase tracking-wider block mb-2">Name</label>
+            <input type="text" class="contact-input" placeholder="Your name" required>
+          </div>
+          <div>
+            <label class="text-xs font-mono text-ink-500 uppercase tracking-wider block mb-2">Email</label>
+            <input type="email" class="contact-input" placeholder="your@email.com" required>
+          </div>
+          <div>
+            <label class="text-xs font-mono text-ink-500 uppercase tracking-wider block mb-2">Message</label>
+            <textarea class="contact-input resize-none" rows="4" placeholder="Tell me about the role or project…" required></textarea>
+          </div>
+          <button type="submit" class="w-full py-3 px-6 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 hover:scale-[1.01]" style="background:linear-gradient(135deg,#7c5cbf,#2dd4bf)">
+            Send Message →
+          </button>
+        </form>
+        <div id="formSuccess" class="hidden text-center py-4 text-sm" style="color:#2dd4bf">
+          ✓ Thanks! I'll get back to you within 24 hours.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="relative z-10 border-t py-8" style="border-color:rgba(255,255,255,0.06)">
+  <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-ink-500">
+    <div class="font-mono">© 2025 Vidhyashree L G · Built with ❤️ and <span style="color:#a484e8">Claude</span></div>
+    <div class="flex items-center gap-5">
+      <a href="mailto:lgvidhyashree@gmail.com" class="hover:text-ink-300 transition-colors">Email</a>
+      <a href="https://linkedin.com/in/vidhyashree" target="_blank" class="hover:text-ink-300 transition-colors">LinkedIn</a>
+      <a href="https://github.com/vidhyashree" target="_blank" class="hover:text-ink-300 transition-colors">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── THEME ──
+const html = document.documentElement;
+const toggle = document.getElementById('themeToggle');
+const thumb = toggle.querySelector('.toggle-thumb');
+let isDark = true;
+
+function updateTheme() {
+  if (isDark) {
+    html.classList.add('dark');
+    html.classList.remove('light');
+    document.body.classList.add('bg-ink-950','text-ink-100');
+    document.body.classList.remove('bg-slate-50','text-slate-900');
+    thumb.textContent = '☀️';
+    toggle.style.background = '#5a3d99';
+    thumb.style.transform = 'translateX(0)';
+  } else {
+    html.classList.remove('dark');
+    html.classList.add('light');
+    document.body.classList.remove('bg-ink-950','text-ink-100');
+    document.body.classList.add('bg-slate-50','text-slate-900');
+    thumb.textContent = '🌙';
+    toggle.style.background = '#2dd4bf';
+    thumb.style.transform = 'translateX(20px)';
+  }
+}
+toggle.addEventListener('click', () => { isDark = !isDark; updateTheme(); });
+updateTheme();
+
+// ── TYPING ANIMATION ──
+const titles = ['Full Stack Developer', 'Python Developer', 'Problem Solver', 'Backend Engineer'];
+let ti = 0, ci = 0, deleting = false;
+const el = document.getElementById('typedText');
+function type() {
+  const word = titles[ti];
+  if (!deleting) { el.textContent = word.slice(0, ++ci); if (ci === word.length) { deleting = true; setTimeout(type, 1800); return; } }
+  else { el.textContent = word.slice(0, --ci); if (ci === 0) { deleting = false; ti = (ti+1) % titles.length; } }
+  setTimeout(type, deleting ? 50 : 90);
+}
+type();
+
+// ── SKILL BARS ──
+function animateSkills() {
+  document.querySelectorAll('[data-level]').forEach(el => {
+    const fill = el.querySelector('.skill-fill');
+    if (fill) fill.style.width = el.dataset.level + '%';
+  });
+}
+
+// ── TECH TAGS STYLE ──
+function styleTags() {
+  const palette = [
+    { bg: 'rgba(124,92,191,0.12)', color: '#a484e8', border: 'rgba(164,132,232,0.2)' },
+    { bg: 'rgba(45,212,191,0.1)', color: '#2dd4bf', border: 'rgba(45,212,191,0.2)' },
+    { bg: 'rgba(124,92,191,0.08)', color: '#c8b4f0', border: 'rgba(124,92,191,0.15)' },
+  ];
+  ['techTags','toolTags','conceptTags'].forEach((id,gi) => {
+    const container = document.getElementById(id);
+    if (!container) return;
+    container.querySelectorAll('span').forEach((s,i) => {
+      const p = palette[(i + gi) % palette.length];
+      s.style.cssText = `background:${p.bg};color:${p.color};border:1px solid ${p.border};padding:4px 10px;border-radius:6px;font-size:12px;font-family:'JetBrains Mono',monospace;display:inline-block`;
+    });
+  });
+  document.querySelectorAll('.tech-tag').forEach((t,i) => {
+    const p = palette[i%palette.length];
+    t.style.cssText = `background:${p.bg};color:${p.color};border:1px solid ${p.border};padding:3px 9px;border-radius:5px;font-size:11px;font-family:'JetBrains Mono',monospace;display:inline-block`;
+  });
+}
+styleTags();
+
+// ── INTERSECTION OBSERVER ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      if (e.target.querySelector('.skill-fill')) animateSkills();
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── NAVBAR SCROLL ──
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY > 60;
+  navbar.style.background = scrolled
+    ? (isDark ? 'rgba(13,13,20,0.92)' : 'rgba(248,250,252,0.92)')
+    : 'transparent';
+  navbar.style.backdropFilter = scrolled ? 'blur(12px)' : 'none';
+  navbar.style.borderBottom = scrolled ? '1px solid rgba(255,255,255,0.06)' : 'none';
+  navbar.style.boxShadow = scrolled ? '0 4px 24px rgba(0,0,0,0.3)' : 'none';
+
+  // active nav
+  const sections = ['hero','about','skills','projects','experience','contact'];
+  const links = document.querySelectorAll('.nav-link');
+  sections.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.top <= 80 && rect.bottom > 80) {
+      links.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`[href="#${id}"].nav-link`);
+      if (active) active.classList.add('active');
+    }
+  });
+});
+
+// ── MOBILE MENU ──
+document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.toggle('hidden');
+});
+function closeMobile() { document.getElementById('mobileMenu').classList.add('hidden'); }
+
+// ── CONTACT FORM ──
+function submitForm(e) {
+  e.preventDefault();
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').classList.remove('hidden');
+  setTimeout(() => {
+    document.getElementById('formSuccess').classList.add('hidden');
+    document.getElementById('contactForm').style.display = 'block';
+    document.getElementById('contactForm').reset();
+  }, 4000);
+}
+
+// ── SMOOTH ANCHOR ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Initial skill bar trigger for visible section
+setTimeout(animateSkills, 600);
+</script>
+</body>
+</html>
