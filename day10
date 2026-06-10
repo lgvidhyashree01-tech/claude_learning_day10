@@ -1,0 +1,15 @@
+*What I learnt from this task:*
+1. Prompt engineering for portfolio: Replacing placeholders in a structured prompt lets Claude generate a complete website with my info in 1 shot.
+2. Claude Artifacts → HTML: Claude can output a full responsive portfolio website with HTML/CSS/JS, no frameworks needed.
+3. Personal branding with AI: Uploading resume + photo helps Claude match tone, projects, and layout to my profile automatically.
+4. Deploy fast: Learnt Vercel/Netlify drag-drop deploy → portfolio goes live in 2 mins without server setup.
+5. Handle limits smartly: If Claude hits usage cap, pause + resume later. Context is saved, so output stays consistent.
+6. Portfolio = proof: Screenshots + live link + code in GitHub makes recruiters trust skills more than just resume claims.
+
+*Tools used:*
+1. Claude AI - Generate full portfolio website from prompt + resume
+2. HTML/CSS/JavaScript - Core stack for responsive portfolio
+3. Git + GitHub - Day10 folder, day10.md, version control, commit & push
+4. Vercel/Netlify - Free hosting for static portfolio site
+5. Browser - Test responsiveness, links, UI
+6. Screenshot tool - Capture desktop + mobile views for GitHub
